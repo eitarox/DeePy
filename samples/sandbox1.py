@@ -1,5 +1,6 @@
 import numpy as np
 from deepy import Variable
+from deepy.utils import plot_dot_graph
 
 if '__file__' in globals():
     import os, sys
@@ -28,6 +29,8 @@ y = Variable(np.array(1.0))
 #z = matyas(x, y)
 z = goldstein(x, y)
 z.backward()
-print(x.grad, y.grad)
-
+x.name = 'x'
+y.name = 'y'
+z.name = 'z'
+plot_dot_graph(z, verbose=False, to_file='goldstein.png')
 
