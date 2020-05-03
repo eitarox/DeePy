@@ -109,11 +109,22 @@ class Variable:
                 for y in f.outputs:
                     y().grad = None
 
-
     def reshape(self, *shape):
         if len(shape) == 1 and isinstance(shape[0], (tuple, list)):
             shape = shape[0]
         return deepy.functions.reshape(self, shape)
+
+    def transpose(self, *axes):
+        if len(axes) == 0:
+            axes = None
+        elif len(axes) == 1:
+            if isinstance(axes[0], (tuple, list) or axes[0]):
+                axes = axes[0]
+        return deepy.functions.transpose(self, axes)
+
+    @property
+    def T(self):
+        return deepy.functions.transpose(self)
 
 
 def as_variable(obj):
