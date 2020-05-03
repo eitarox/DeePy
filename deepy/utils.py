@@ -64,3 +64,5 @@ def plot_dot_graph(output, verbose=True, to_file='graph.png'):
     cmd = 'dot {} -T {} -o {}'.format(graph_path, extension, to_file)
     subprocess.run(cmd, shell=True)
 
+
+def sum_to(x, shape):
