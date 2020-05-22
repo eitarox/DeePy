@@ -11,6 +11,7 @@ if is_simple_core:
 
 else:
     from deepy.core import Variable
+    from deepy.core import Parameter
     from deepy.core import Function
     from deepy.core import using_config
     from deepy.core import no_grad
