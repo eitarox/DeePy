@@ -18,5 +18,8 @@ else:
     from deepy.core import as_array
     from deepy.core import as_variable
     from deepy.core import setup_variable
+    from deepy.core import Config
+    from deepy.layers import Layer
+    from deepy.models import Model
 
 setup_variable()
