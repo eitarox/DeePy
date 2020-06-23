@@ -1,15 +1,7 @@
 import numpy as np
-from deepy import Variable, Model
+from deepy import Variable, Parameter, Model
 import deepy.layers as L
 import deepy.functions as F
-
-np.random.seed(0)
-x = np.random.rand(100, 1)
-y = np.sin(2 * np.pi * x) + np.random.rand(100, 1)
-
-lr = 0.2
-max_iter = 10000
-hidden_size = 10
 
 
 class TwoLayerNet(Model):
@@ -24,16 +16,6 @@ class TwoLayerNet(Model):
         return y
 
 
-model = TwoLayerNet(hidden_size, 1)
-
-for i in range(max_iter):
-    y_pred = model(x)
-    loss = F.mean_squared_error(y, y_pred)
-
-    model.cleargrads()
-    loss.backward()
-
-    for p in model.params():
-        p.data -= lr * p.grad.data
-    if i % 1000 == 0:
-        print(loss)
+x = Variable(np.random.randn(5, 10), name='x')
+model = TwoLayerNet(100, 10)
+model.plot(x)
